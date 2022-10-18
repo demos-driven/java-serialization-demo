@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 import com.google.common.io.Resources;
 
@@ -13,25 +12,6 @@ import com.google.common.io.Resources;
  */
 
 public class DefaultSerialization {
-
-  static class Employee implements Serializable {
-    private static final long serialVersionUID = -4432835278431659535L;
-    private int id;
-    private String name;
-
-    public Employee(int id, String name) {
-      this.id = id;
-      this.name = name;
-    }
-
-    @Override
-    public String toString() {
-      return "Employee{" +
-          "id=" + id +
-          ", name='" + name + '\'' +
-          '}';
-    }
-  }
 
   private static void show_serialized_bytes(byte[] bytes) {
     System.out.print("byte[]: ");
@@ -58,6 +38,7 @@ public class DefaultSerialization {
     FileOutputStream file = new FileOutputStream(fileName);
     buffer.writeTo(file);
     buffer.close();
+    System.out.println("Serialize Done.");
   }
 
   private static void deserializeFrom(String fileName) throws IOException, ClassNotFoundException {
@@ -68,10 +49,11 @@ public class DefaultSerialization {
       Employee employee = (Employee)input.readObject();
       System.out.println(String.format("Read: %d %s %s", num, str, employee));
     }
+    System.out.println("Deserialize Done.");
   }
 
   public static void main(String[] args) throws IOException, ClassNotFoundException {
-    String fileName = Resources.getResource("").getPath() + "/simple";
+    String fileName = Resources.getResource("").getPath() + "/default";
     serializeTo(fileName);
     // deserializeFrom(fileName);
   }
