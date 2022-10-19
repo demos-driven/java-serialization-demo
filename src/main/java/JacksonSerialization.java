@@ -10,7 +10,7 @@ import com.google.common.io.Resources;
  * Copyright (C) 2022 Urban Compass, Inc.
  */
 
-public class JSONSerialization {
+public class JacksonSerialization {
 
   private static void serializeTo(String fileName) throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();
@@ -19,7 +19,7 @@ public class JSONSerialization {
     System.out.println("Serialize Done.");
   }
 
-  private static void deserializeFrom(String fileName) throws IOException, ClassNotFoundException {
+  private static void deserializeFrom(String fileName) throws IOException {
     String content = Files.readString(Paths.get(fileName));
     System.out.println("Read: " + content);
 
@@ -30,9 +30,9 @@ public class JSONSerialization {
     System.out.println("Deserialize Done.");
   }
 
-  public static void main(String[] args) throws IOException, ClassNotFoundException {
-    String fileName = Resources.getResource("").getPath() + "/json";
-    // serializeTo(fileName);
+  public static void main(String[] args) throws IOException {
+    String fileName = Resources.getResource("").getPath() + "/jackson";
+    serializeTo(fileName);
     deserializeFrom(fileName);
   }
 }
