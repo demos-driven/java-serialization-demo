@@ -3,7 +3,7 @@
 ## Read binary file
 
 ```bash
-xxd -b target/classes/simple
+xxd -b target/classes/default
 ```
 
 Sample output:

@@ -33,6 +33,6 @@ public class JacksonSerialization {
   public static void main(String[] args) throws IOException {
     String fileName = Resources.getResource("").getPath() + "/jackson";
     serializeTo(fileName);
-    deserializeFrom(fileName);
+    // deserializeFrom(fileName);
   }
 }
